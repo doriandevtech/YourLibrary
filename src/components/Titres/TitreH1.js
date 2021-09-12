@@ -9,7 +9,7 @@ export default titreH1;
 import React from "react";
 
 const titreH1 = (props) => (
-    //  Écrire le code
+    //  Écrire le code ici
 );
 
 export default titreH1;
