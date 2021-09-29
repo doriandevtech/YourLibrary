@@ -4,16 +4,29 @@ import Button from "./components/Buttons/Button";
 import Livres from "./containers/Livres/Livres";
 
 class App extends Component {
+
+  state = {
+    ajoutLivre : false
+  }
+
+  handleClicAjoutLivre = () => {
+    this.setState((oldState, props) => {
+      return {ajoutLivre: !oldState.ajoutLivre}
+    })
+  }
+
   render() {
     return (
       <div className="container">
         <TitreH1>Page lisant les livres</TitreH1>
-        <Livres/>
+        <Livres ajoutLivre={this.state.ajoutLivre}/>
         <Button 
-        texte="AJOUTER" 
         typeBtn="btn-success" 
         css="w-100" 
-        clic={() => console.log("Ajout")}></Button>
+        clic={this.handleClicAjoutLivre}>
+        { !this.state.ajoutLivre ? "Ajouter" : "Fermer l'ajout"}
+
+        </Button>
       </div>
     );
   }

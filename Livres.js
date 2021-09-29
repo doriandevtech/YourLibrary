@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import Livre from "./Livre/Livre";
+import FormulaireAjout from './FormulaireAjout/FormulaireAjout';
 
 class Livres extends Component {
     state = {
         livres : [
             {id:1, titre: "L'algorithmique pour les nuls", auteur:"Les Nuls", nbPages:"234"},
-            {id:2, titre: "L'algorithmique pour les nuls", auteur:"Les Nuls", nbPages:"234"},
-            {id:3, titre: "L'algorithmique pour les nuls", auteur:"Les Nuls", nbPages:"234"},
-            {id:4, titre: "L'algorithmique pour les nuls", auteur:"Les Nuls", nbPages:"234"},
+            {id:2, titre: "Apprendre le JavaScript", auteur:"Un développeur", nbPages:"122"},
+            {id:3, titre: "Harry Potter le retour", auteur:"Les petits enfants de JK Rowling", nbPages:"3098789"},
+            {id:4, titre: "Comprendre le hors-jeux pour les nuls", auteur:"Les Nuls", nbPages:"287"},
         ]
     }
 
     handleSuppressionLivre = (id) => {
-        // COmparaison de l'idée choisi avec l'id du livre
+        // Comparaison de l'idée choisi avec l'id du livre
         const livreIndexTab = this.state.livres.findIndex(l => {
             return l.id === id
         })
@@ -27,6 +28,7 @@ class Livres extends Component {
 
     render() {
         return (
+            <>
             <table className="table text-center">
                 <thead>
                     <tr className="table-dark">
@@ -54,6 +56,8 @@ class Livres extends Component {
                     }
                 </tbody>
             </table>
+            {this.props.ajoutLivre && <FormulaireAjout />}
+            </>
         );
     }
 }
