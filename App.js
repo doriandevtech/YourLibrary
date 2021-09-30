@@ -1,3 +1,4 @@
+// Import des différentes dépendances requises
 import React, { Component } from "react";
 import TitreH1 from "./components/Titres/TitreH1";
 import Button from "./components/Buttons/Button";
@@ -9,6 +10,7 @@ class App extends Component {
     ajoutLivre : false
   }
 
+  // Méthode déclanchant l'ajout d'un livre
   handleClicAjoutLivre = () => {
     this.setState((oldState, props) => {
       return {ajoutLivre: !oldState.ajoutLivre}
@@ -18,14 +20,18 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <TitreH1>Page lisant les livres</TitreH1>
+      {/* Component titre h1 */}
+        <TitreH1>Page lisant les livres</TitreH1> 
+        
+      {/* Component livre */}
         <Livres ajoutLivre={this.state.ajoutLivre}/>
+
+      {/* Component bouton */}
         <Button 
         typeBtn="btn-success" 
         css="w-100" 
         clic={this.handleClicAjoutLivre}>
         { !this.state.ajoutLivre ? "Ajouter" : "Fermer l'ajout"}
-
         </Button>
       </div>
     );

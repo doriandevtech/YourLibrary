@@ -1,3 +1,4 @@
+// Import des différentes dépendances requises
 import React from "react";
 import classes from "./TitreH1.module.css";
 
@@ -7,11 +8,3 @@ const titreH1 = (props) => {
 };
 
 export default titreH1;
-
-// import React from "react";
-
-// const titreH1 = (props) => (
-//     //  Écrire le code ici
-// );
-
-// export default titreH1;

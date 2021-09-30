@@ -1,8 +1,11 @@
+// Import des différentes dépendances requises
 import React, { Component } from 'react';
 import Livre from "./Livre/Livre";
 import FormulaireAjout from './FormulaireAjout/FormulaireAjout';
 
+// Component statefull (utilisation de state au lieu de props)
 class Livres extends Component {
+    // Déclaration des données des différents livres selon un un objet state contenant un tableau livres
     state = {
         livres : [
             {id:1, titre: "L'algorithmique pour les nuls", auteur:"Les Nuls", nbPages:"234"},
@@ -12,6 +15,7 @@ class Livres extends Component {
         ]
     }
 
+    // Méthode de suppression de livre
     handleSuppressionLivre = (id) => {
         // Comparaison de l'idée choisi avec l'id du livre
         const livreIndexTab = this.state.livres.findIndex(l => {
@@ -40,14 +44,14 @@ class Livres extends Component {
                 </thead>
                 <tbody>
                     {
-                        this.state.livres.map(livre => {
+                        this.state.livres.map(livre => { // Utilisation de la fonction map() afin d'afficher l'ensemble des livres du tableau livres contenu dans l'objet state
                             return (
                                 <tr key={livre.id}>
                                 <Livre
                                     titre={livre.titre}
                                     auteur={livre.auteur}
                                     nbPages={livre.nbPages}
-                                    suppression={() => this.handleSuppressionLivre(livre.id)}
+                                    suppression={() => this.handleSuppressionLivre(livre.id)} // Le bouton suppression est jumelé à la fonction de suppression de livre
                                 />
                                 </tr>
                             )
@@ -56,6 +60,7 @@ class Livres extends Component {
                     }
                 </tbody>
             </table>
+            {/* Bouton d'ajout de livre permet d'afficher le component lié au formulaire d'ajout */}
             {this.props.ajoutLivre && <FormulaireAjout />}
             </>
         );

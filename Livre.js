@@ -1,6 +1,8 @@
+// Import des différentes dépendances requises
 import React from "react";
 import Bouton from "../../../components/Buttons/Button";
 
+// Component stateless (utilisation de props au lieu de state)
 const livre = (props) => (
     <>
         <td>{props.titre}</td>
