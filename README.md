@@ -1,6 +1,6 @@
 - YourLibrary App:
 
-Add, update and delete books from your interactive library
+Add, update and delete books from your interactive library.
 
 # Getting Started with Create React App
 
