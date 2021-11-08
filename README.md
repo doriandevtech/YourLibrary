@@ -2,6 +2,8 @@
 
 Add, update and delete books from your interactive library.
 
+Build your own digital library just by using the power of your fingers !
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
