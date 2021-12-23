@@ -4,7 +4,7 @@ Add, update and delete books from your interactive library.
 
 Build your own digital library just by using the power of your fingers !
 
-Enjoy it :)
+Enjoy it and have fun :)
 
 # Getting Started with Create React App
 
