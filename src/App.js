@@ -7,7 +7,7 @@ import Livres from "./containers/Livres/Livres";
 class App extends Component {
 
   state = {
-    ajoutLivre : false
+    ajoutLivre : false // Boolean qui gère la fermeture ou l'ouverture du formulaire
   }
 
   // Méthode déclanchant l'ajout d'un livre
@@ -21,11 +21,9 @@ class App extends Component {
     return (
       <div className="container">
       {/* Component titre h1 */}
-        <TitreH1>Page lisant les livres</TitreH1> 
-        
+        <TitreH1>Page lisant les livres</TitreH1>
       {/* Component livre */}
-        <Livres ajoutLivre={this.state.ajoutLivre}/>
-
+        <Livres ajoutLivre={this.state.ajoutLivre} fermerAjoutLivre={() => this.setState({ajoutLivre:false})}/>
       {/* Component bouton */}
         <Button 
         typeBtn="btn-success" 
