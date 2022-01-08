@@ -103,7 +103,7 @@ class Livres extends Component {
                                     <FormulaireModification
                                         id={livre.id}
                                         titre={livre.titre}
-                                        auteur={livre.titre}
+                                        auteur={livre.auteur}
                                         nbPages={livre.nbPages}
                                         validationModification={this.handleModificationLivre}
                                     />
