@@ -1,30 +1,31 @@
 // Import des différentes dépendances requises
 import React, { Component } from 'react';
-import Button from '../../../components/Buttons/Button'
+import Button from '../../../components/Buttons/Button';
+import {withFormik} from 'formik'
 
 // Component statefull
 class FormulaireAjout extends Component {
 
-    state = {
-        titreSaisi : "",
-        auteurSaisi : "",
-        nbPagesSaisi : "",
-    }
+    // state = {
+    //     titreSaisi : "",
+    //     auteurSaisi : "",
+    //     nbPagesSaisi : "",
+    // }
 
-    // Empêcher la page de se mettre à jour une fois le formulaire validé
-    handleValidationForm = (event) => {
-        event.preventDefault()
-        this.props.validation(this.state.titreSaisi, this.state.auteurSaisi, this.state.nbPagesSaisi)
+    // // Empêcher la page de se mettre à jour une fois le formulaire validé
+    // handleValidationForm = (event) => {
+    //     event.preventDefault()
+    //     this.props.validation(this.state.titreSaisi, this.state.auteurSaisi, this.state.nbPagesSaisi)
 
-        // Réinitialisation du contenu du formulaire une fois ce dernier ajouté
-        this.setState(
-            {
-                titreSaisi : "",
-                auteurSaisi : "",
-                nbPagesSaisi : "",
-            }
-        )
-    }
+    //     // Réinitialisation du contenu du formulaire une fois ce dernier ajouté
+    //     this.setState(
+    //         {
+    //             titreSaisi : "",
+    //             auteurSaisi : "",
+    //             nbPagesSaisi : "",
+    //         }
+    //     )
+    // }
 
     render() {
         return (
@@ -37,8 +38,9 @@ class FormulaireAjout extends Component {
                             type="text"
                             className="form-control"
                             id="titre"
-                            value={this.state.titreSaisi}
-                            onChange={(event) => this.setState({titreSaisi:event.target.value})}
+                            name='titre'
+                            value={this.props.values.titre}
+                            onChange={this.props.handleChange}
                         />
                     </div>
                     <div className="mb-3">
@@ -46,9 +48,10 @@ class FormulaireAjout extends Component {
                         <input 
                             type="text"
                             className="form-control"
-                            id="titre"
-                            value={this.state.auteurSaisi}
-                            onChange={(event) => this.setState({auteurSaisi:event.target.value})}
+                            id="auteur"
+                            name='auteur'
+                            value={this.props.values.auteur}
+                            onChange={this.props.handleChange}
                         />
                     </div>
                     <div className="mb-3">
@@ -56,15 +59,53 @@ class FormulaireAjout extends Component {
                         <input 
                             type="text"
                             className="form-control"
-                            id="titre"
-                            value={this.state.nbPagesSaisi}
-                            onChange={(event) => this.setState({nbPagesSaisi:event.target.value})}
+                            id="nbPages"
+                            name="nbPages"
+                            value={this.props.values.nbPages}
+                            onChange={this.props.handleChange}
                         />
                     </div>
-                    <Button typeBtn='btn-primary' clic={this.handleValidationForm}>Valider</Button>
+                    <div className="mb-3">
+                        <label htmlFor="nbChapitres" className="form-label">Nombre de chapitres</label>
+                        <input 
+                            type="text"
+                            className="form-control"
+                            id="nbChapitres"
+                            name="nbChapitres"
+                            value={this.props.values.nbChapitres}
+                            onChange={this.props.handleChange}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="maisonEdition" className="form-label">Maison d'édition</label>
+                        <input 
+                            type="text"
+                            className="form-control"
+                            id="maisonEdition"
+                            name="maisonEdition"
+                            value={this.props.values.maisonEdition}
+                            onChange={this.props.handleChange}
+                        />
+                    </div>
+                    <Button typeBtn='btn-primary' clic={this.props.handleSubmit}>Valider</Button>
                 </form>
             </>
         );
     }
 }
-export default FormulaireAjout;
+export default withFormik({
+    mapPropsToValues : () => ({
+        titre: '',
+        auteur: '',
+        nbPages: '',
+        nbChapitres: '',
+        maisonEdition: ''
+    }),
+    validate : values => {
+        
+    },
+    handleSubmit : (values,{props}) => {
+        props.validation(values.titre, values.auteur, values.nbPages, values.nbChapitres, values.maisonEdition)
+    }
+
+})(FormulaireAjout);
