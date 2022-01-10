@@ -1,6 +1,6 @@
 // Import des différentes dépendances requises
 import React, { Component } from 'react';
-import Livre from "./Livre/Livre";
+import Livre from "./Livre/Livre.js";
 import FormulaireAjout from './FormulaireAjout/FormulaireAjout';
 import FormulaireModification from './FormulaireModification/FormulaireModification';
 
