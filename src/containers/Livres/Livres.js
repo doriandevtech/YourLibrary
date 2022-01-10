@@ -13,6 +13,7 @@ class Livres extends Component {
             {id:2, titre: "Apprendre le JavaScript", auteur:"Un développeur", nbPages:"122"},
             {id:3, titre: "Harry Potter à l'école des sorciers", auteur:"JK Rowling", nbPages:"3089"},
             {id:4, titre: "Harry Potter et la chambre des secrets", auteur:"JK Rowling", nbPages:"3089"},
+            {id:5, titre: "Harry Potter et la chambre des secrets", auteur:"JK Rowling", nbPages:"3089"},
         ],
         lastIdLivre : 5,
         idLivreAModifier : 0,
