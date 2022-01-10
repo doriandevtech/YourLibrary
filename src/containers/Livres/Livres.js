@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Livre from "./Livre/Livre.js";
 import FormulaireAjout from './FormulaireAjout/FormulaireAjout';
 import FormulaireModification from './FormulaireModification/FormulaireModification';
+import Alert from '../../components/Alert/Alert.js';
 
 // Component statefull (utilisation de state au lieu de props)
 class Livres extends Component {
@@ -17,6 +18,7 @@ class Livres extends Component {
         ],
         lastIdLivre : 5,
         idLivreAModifier : 0,
+        alerteMessage : null,
     }
 
     // Méthode de suppression de livre
@@ -30,7 +32,13 @@ class Livres extends Component {
         const newLivre = [...this.state.livres];
         newLivre.splice(livreIndexTab,1); // Suppression de la ligne liée à l'id du livre choisit
 
-        this.setState({livres:newLivre}); // Mise à jour du tableau de livres
+        this.setState({
+            livres:newLivre,
+            alerteMessage: {
+                message: "Suppression effectuée",
+                type: "alert-danger"
+            }
+        }); // Mise à jour du tableau de livres
     }
 
     handleAjoutLivre = (titre, auteur, nbPages, lastIdLivre) => {
@@ -48,6 +56,10 @@ class Livres extends Component {
             return {
                 livres: newListeLivres,
                 lastIdLivre: oldState.lastIdLivre + 1,
+                alerteMessage: {
+                    message: "Ajout effectué",
+                    type: "alert-success"
+                }
             }
         })
 
@@ -66,7 +78,11 @@ class Livres extends Component {
 
         this.setState({
             livres: newListe,
-            idLivreAModifier: 0
+            idLivreAModifier: 0,
+            alerteMessage: {
+                message: "Modification effectuée",
+                type: "alert-warning"
+            }
         })
     }
 
@@ -74,6 +90,7 @@ class Livres extends Component {
     render() {
         return (
             <>
+            {this.state.alerteMessage && <Alert typeAlert={this.state.alerteMessage.type}>{this.state.alerteMessage.message}</Alert>}
             <table className="table text-center">
                 <thead>
                     <tr className="table-dark">
