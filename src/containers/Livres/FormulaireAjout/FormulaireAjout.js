@@ -68,11 +68,12 @@ class FormulaireAjout extends Component {
                     <div className="mb-3">
                         <label htmlFor="nbPages" className="form-label">Nombre de pages</label>
                         <input 
-                            type="text"
+                            type="number"
                             className="form-control"
                             id="nbPages"
                             name="nbPages"
                             value={this.props.values.nbPages}
+                            // Modification d'un entrée du type "chaîne de caractère" en "entier"
                             onChange={(event) => this.props.setFieldValue('nbPages', +event.target.value)}
                             onBlur={this.props.handleBlur}
                         />
@@ -84,11 +85,12 @@ class FormulaireAjout extends Component {
                     <div className="mb-3">
                         <label htmlFor="nbChapitres" className="form-label">Nombre de chapitres</label>
                         <input 
-                            type="text"
+                            type="number"
                             className="form-control"
                             id="nbChapitres"
                             name="nbChapitres"
                             value={this.props.values.nbChapitres}
+                            // Modification d'un entrée du type "chaîne de caractère" en "entier"
                             onChange={(event) => this.props.setFieldValue('nbChapitres', +event.target.value)}
                             onBlur={this.props.handleBlur}
                         />
@@ -146,8 +148,6 @@ export default withFormik({
                         .lessThan(1000, "Le nombre de chapitres doit être infèrieur à 1000")
                         .moreThan(50, "Le nombre de chapitres doit être supèrieur à 50")
                         .required("L'auteur est obligatoire"),
-
-
     }),
     // validate : values => {
         // const errors = {};
