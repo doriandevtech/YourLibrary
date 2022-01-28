@@ -1,7 +1,7 @@
 // Import des différentes dépendances requises
 import React, { Component } from 'react';
 import Button from '../../../components/Buttons/Button';
-import {validateYupSchema, withFormik} from 'formik'
+import { withFormik } from 'formik'
 import * as Yup from "yup"
 
 // Component statefull
@@ -82,39 +82,6 @@ class FormulaireAjout extends Component {
                             && <span style={{color:"red"}}>{this.props.errors.nbPages}</span>
                         }
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="nbChapitres" className="form-label">Nombre de chapitres</label>
-                        <input 
-                            type="number"
-                            className="form-control"
-                            id="nbChapitres"
-                            name="nbChapitres"
-                            value={this.props.values.nbChapitres}
-                            // Modification d'un entrée du type "chaîne de caractère" en "entier"
-                            onChange={(event) => this.props.setFieldValue('nbChapitres', +event.target.value)}
-                            onBlur={this.props.handleBlur}
-                        />
-                        {
-                            this.props.touched.nbChapitres && this.props.errors.nbChapitres 
-                            && <span style={{color:"red"}}>{this.props.errors.nbChapitres}</span>
-                        }
-                    </div>
-                    <div className="mb-3">
-                        <label htmlFor="maisonEdition" className="form-label">Maison d'édition</label>
-                        <input 
-                            type="text"
-                            className="form-control"
-                            id="maisonEdition"
-                            name="maisonEdition"
-                            value={this.props.values.maisonEdition}
-                            onChange={this.props.handleChange}
-                            onBlur={this.props.handleBlur}
-                        />
-                        {
-                            this.props.touched.maisonEdition && this.props.errors.maisonEdition 
-                            && <span style={{color:"red"}}>{this.props.errors.maisonEdition}</span>
-                        }
-                    </div>
                     <Button typeBtn='btn-primary' clic={this.props.handleReset}>Reset</Button>
                     <Button typeBtn='btn-primary' clic={this.props.handleSubmit}>Valider</Button>
                 </form>
@@ -127,8 +94,6 @@ export default withFormik({
         titre: '',
         auteur: '',
         nbPages: '',
-        nbChapitres: '',
-        maisonEdition: ''
     }),
     // Condition sur les champs du formulaire
     validationSchema : Yup.object().shape({
@@ -143,11 +108,7 @@ export default withFormik({
         nbPages : Yup.number()
                         .lessThan(1000, "Le nombre de pages doit être infèrieur à 1000")
                         .moreThan(50, "Le nombre de pages doit être supèrieur à 50")
-                        .required("L'auteur est obligatoire"),
-        nbChapitres : Yup.number()
-                        .lessThan(1000, "Le nombre de chapitres doit être infèrieur à 1000")
-                        .moreThan(50, "Le nombre de chapitres doit être supèrieur à 50")
-                        .required("L'auteur est obligatoire"),
+                        .required("Un nombre de pages est requis"),
     }),
     // validate : values => {
         // const errors = {};
@@ -169,7 +130,7 @@ export default withFormik({
         // return errors;
     // },
     handleSubmit : (values,{props}) => {
-        props.validation(values.titre, values.auteur, values.nbPages, values.nbChapitres, values.maisonEdition)
+        props.validation(values.titre, values.auteur, values.nbPages)
     }
 
 })(FormulaireAjout);
