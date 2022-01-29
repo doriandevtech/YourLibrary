@@ -124,9 +124,6 @@ export default withFormik({
         // if (!values.nbPages) {
         //     errors.nbPages = "Le champ \"Nombre de pages\" est requis"
         // }
-        // if (!values.nbChapitres) {
-        //     errors.auteur = "Le champ \"Nombre de chapitres\" est requis"
-        // }
         // return errors;
     // },
     handleSubmit : (values,{props}) => {
